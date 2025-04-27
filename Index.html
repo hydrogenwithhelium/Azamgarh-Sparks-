@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azamgarh Spark</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .submit-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #28a745; /* Green color */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .ideas-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        .ideas-table th, .ideas-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .ideas-table th {
+            background-color: #eee;
+        }
+
+        .progress-bar-container {
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background-color: #4CAF50;
+            width: 0%;
+            line-height: 20px;
+            color: white;
+            text-align: center;
+            transition: width 0.5s;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 12px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .Submitted { background-color: gray; }
+        .Discussion { background-color: orange; }
+        .Planning { background-color: gold; color: #333; }
+        .Implementation { background-color: #17a2b8; }
+        .Completed { background-color: #28a745; }
+
+        .support-button {
+            background-color: #ff4081;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Azamgarh Spark</h1>
+
+    <a href="https://docs.google.com/forms/d/1L2qauknOLZJ-tsfe2wov2Mn_KuJElWMOVGz3eTDIHOM/edit?usp=forms_home&ths=true" class="submit-button" target="_blank">Submit New Idea</a>
+
+    <table class="ideas-table">
+        <thead>
+            <tr>
+                <th>Idea</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Progress</th>
+                <th>Support</th>
+            </tr>
+        </thead>
+        <tbody id="ideas-list">
+            <!-- Idea will be injected here -->
+        </tbody>
+    </table>
+
+    <script>
+        const ideas = [
+            {
+                title: "Proper Street Light Implementation at Musapur Area, Azamgarh",
+                description: "Ensure proper street light installation to improve public safety, comfort at night, and prevent disruptions, especially for women and girls.",
+                status: "Submitted",
+                progress: 0,
+                support: 5
+            }
+        ];
+
+        function loadIdeas() {
+            const list = document.getElementById('ideas-list');
+            ideas.forEach(idea => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${idea.title}</td>
+                    <td>${idea.description}</td>
+                    <td><span class="status ${idea.status.replace(/\s/g, '')}">${idea.status}</span></td>
+                    <td>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width:${idea.progress}%">${idea.progress}%</div>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="https://form.typeform.com/to/lfx8TvwN" class="support-button" target="_blank">❤️ ${idea.support}</a>
+                    </td>
+                `;
+
+                list.appendChild(row);
+            });
+        }
+
+        loadIdeas();
+    </script>
+
+</body>
+</html>
